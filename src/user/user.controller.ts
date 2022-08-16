@@ -1,4 +1,6 @@
 import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
+import { ApiResponse } from '@nestjs/swagger';
+import { User } from '@prisma/client';
 import { UserDto, } from './dto';
 import { UserService } from './user.service';
 
@@ -8,7 +10,9 @@ export class UserController {
 
 
   @Post()
-  create(@Body() dto: UserDto) {
+  @ApiResponse({ status: 201, description: 'The record has been successfully created.'})
+  @ApiResponse({ status: 403, description: 'Forbidden.'}) 
+  create(@Body() dto: UserDto): Promise<User> {
     return this.userService.create(dto)
   }
 

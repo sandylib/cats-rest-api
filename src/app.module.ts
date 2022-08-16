@@ -10,7 +10,8 @@ import { UserModule } from './user/user.module';
       isGlobal: true,
     }),
     CatModule, 
-    PrismaModule, UserModule
+    PrismaModule, 
+    UserModule
   ]
 })
 export class AppModule {}
